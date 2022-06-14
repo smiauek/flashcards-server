@@ -56,12 +56,17 @@ public class CardEntity {
 		this.back = back;
 	}
 
-	public Long getDeck() {
+	public Long getDeckId() {
 		return deckId;
 	}
 
-	public void setDeck(Long deckId) {
+	public void setDeckId(Long deckId) {
 		this.deckId = deckId;
+	}
+
+	@Override
+	public String toString() {
+		return "CardEntity [cardId=" + cardId + ", front=" + front + ", back=" + back + ", deckId=" + deckId + "]";
 	}
 
 }

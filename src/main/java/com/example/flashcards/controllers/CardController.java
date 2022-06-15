@@ -3,10 +3,12 @@ package com.example.flashcards.controllers;
 import java.rmi.ServerException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,11 +43,15 @@ public class CardController {
 //			return new ResponseEntity<CardEntity>(card, HttpStatus.CREATED);
 //		}
 //	}
-	
+
 	@PostMapping("/new")
 	public CardEntity newCard(@RequestBody CardEntity newCard) {
 		System.out.println(newCard);
 		return cardRepo.save(newCard);
 	}
 
+	@DeleteMapping("/{id}")
+	public void deleteCard(@PathVariable Long id) {
+		cardRepo.deleteById(id);
+	}
 }

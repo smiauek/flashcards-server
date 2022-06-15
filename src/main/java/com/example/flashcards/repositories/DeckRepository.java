@@ -6,5 +6,7 @@ import com.example.flashcards.entities.DeckEntity;
 
 @Repository
 public interface DeckRepository extends JpaRepository<DeckEntity, Long> {
+	
+	
 
 }

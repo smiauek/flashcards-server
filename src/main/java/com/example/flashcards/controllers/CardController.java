@@ -47,7 +47,7 @@ public class CardController {
 //		CardEntity card = cardRepo.save(newCard);
 //		System.out.println(card);
 //		if (card == null) {
-//			throw new ServerException("something went wron when creating new card");
+//			throw new ServerException("something went wrong when creating new card");
 //		} else {
 //			return new ResponseEntity<CardEntity>(card, HttpStatus.CREATED);
 //		}

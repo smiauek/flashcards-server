@@ -61,7 +61,7 @@ public class DeckEntity {
 		return userId;
 	}
 
-	public void setUser(Long userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 

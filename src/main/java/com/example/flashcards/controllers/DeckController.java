@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -46,6 +47,12 @@ public class DeckController {
 	public List<DeckEntity> getUserDecks(@PathVariable Long id) {
 
 		return deckRepo.findByUserId(id);
+	}
+
+	@GetMapping("/find")
+	public List<DeckEntity> findDecks(@RequestParam String searchTerm) {
+
+		return deckRepo.findByNameContainsOrDescriptionContains(searchTerm, searchTerm);
 	}
 
 	@PostMapping(path = "/new", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)

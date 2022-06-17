@@ -42,6 +42,12 @@ public class DeckController {
 		return deckRepo.findById(id);
 	}
 
+	@GetMapping("/user/{id}")
+	public List<DeckEntity> getUserDecks(@PathVariable Long id) {
+
+		return deckRepo.findByUserId(id);
+	}
+
 	@PostMapping(path = "/new", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<DeckEntity> create(@RequestBody DeckEntity newDeck) throws ServerException {
 		DeckEntity deck = deckRepo.save(newDeck);

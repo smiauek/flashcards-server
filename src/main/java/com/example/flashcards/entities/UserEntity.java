@@ -1,31 +1,37 @@
 package com.example.flashcards.entities;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
+@Table(name = "users")
+@DiscriminatorValue("users")
 public class UserEntity {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long userId;
-	
+
+	@Column(name = "username", nullable = false, unique = true)
 	private String username;
+
+	@Column(name = "email", nullable = false, unique = true)
 	private String email;
+
+	@Column(name = "password", nullable = false)
 	private String password;
 
-	
 	public UserEntity() {
-		
+
 	}
 
 	public UserEntity(String username, String email, String password) {
-		
+
 		this.username = username;
 		this.email = email;
 		this.password = password;
@@ -62,7 +68,11 @@ public class UserEntity {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "UserEntity [userId=" + userId + ", username=" + username + ", email=" + email + ", password=" + password
+				+ "]";
+	}
 
 }

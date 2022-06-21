@@ -7,4 +7,5 @@ import com.example.flashcards.entities.UserEntity;
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
+	UserEntity findByUsername(String username);
 }

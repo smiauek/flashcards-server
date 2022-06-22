@@ -78,7 +78,7 @@ public class DeckController {
 
 	}
 
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/delete/{id}")
 	public void deleteDeck(@PathVariable Long id) {
 		deckRepo.deleteById(id);
 	}

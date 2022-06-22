@@ -20,7 +20,6 @@ public class UserController {
 
 	private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-	
 	@PostMapping("/new")
 	public Long saveUser(@RequestBody UserEntity user) {
 		UserEntity newUser = user;

@@ -70,7 +70,7 @@ public class CardController {
 
 	}
 
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/delete/{id}")
 	public void deleteCard(@PathVariable Long id) {
 		cardRepo.deleteById(id);
 	}

@@ -9,8 +9,6 @@ import com.example.flashcards.entities.CardEntity;
 @Repository
 public interface CardRepository extends JpaRepository<CardEntity, Long> {
 
-	
 	List<CardEntity> findCardByDeckId(Long id);
-	
 
 }

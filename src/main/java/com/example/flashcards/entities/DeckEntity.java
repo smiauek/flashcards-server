@@ -19,7 +19,7 @@ public class DeckEntity {
 	private String description;
 
 //	@ManyToOne
-	//@JoinColumn(name = "userId")
+//  @JoinColumn(name = "userId")
 	private Long userId;
 
 	public DeckEntity() {

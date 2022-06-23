@@ -1,6 +1,10 @@
 package com.example.flashcards.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,11 +27,19 @@ public class UserController {
 
 	private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
+//	@PostMapping("/new")
+//	public Long saveUser(@RequestBody UserEntity user) {
+//		UserEntity newUser = user;
+//		newUser.setPassword(passwordEncoder.encode(user.getPassword()));
+//		return userRepo.save(newUser).getUserId();
+//	}
+
 	@PostMapping("/new")
-	public Long saveUser(@RequestBody UserEntity user) {
+	public ResponseEntity<UserEntity> saveUser(@Valid @RequestBody UserEntity user) {
 		UserEntity newUser = user;
 		newUser.setPassword(passwordEncoder.encode(user.getPassword()));
-		return userRepo.save(newUser).getUserId();
+		UserEntity savedUser = userRepo.save(newUser);
+		return new ResponseEntity<UserEntity>(savedUser, HttpStatus.CREATED);
 	}
 
 	@GetMapping("/one")

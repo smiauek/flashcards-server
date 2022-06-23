@@ -7,6 +7,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
@@ -18,12 +21,18 @@ public class UserEntity {
 	private Long userId;
 
 	@Column(name = "username", nullable = false, unique = true)
+	@NotEmpty(message = "username must not be empty")
+	@Size(min = 4, message = "username should have at least 4 characters")
 	private String username;
 
 	@Column(name = "email", nullable = false, unique = true)
+	@NotEmpty(message = "email must not be empty")
+	@Email(message = "email should be formatted properly - example@example.com")
 	private String email;
 
 	@Column(name = "password", nullable = false)
+	@NotEmpty(message = "password must not be empty")
+	@Size(min = 4, message = "password should have at least 4 characters")
 	private String password;
 
 	public UserEntity() {

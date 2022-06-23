@@ -62,7 +62,7 @@ public class DeckController {
 	}
 
 	@PutMapping("/update/{id}")
-	public ResponseEntity<DeckEntity> updateDeck(@PathVariable Long id, @RequestBody DeckEntity updatedDeck)
+	public ResponseEntity<DeckEntity> updateDeck(@PathVariable Long id, @Valid @RequestBody DeckEntity updatedDeck)
 			throws Exception {
 
 		DeckEntity deckToUpdate = deckRepo.findById(id).orElseThrow(() -> new Exception("deck not found"));
@@ -72,7 +72,7 @@ public class DeckController {
 
 		DeckEntity deck = deckRepo.save(deckToUpdate);
 
-		return ResponseEntity.ok(deck);
+		return new ResponseEntity<DeckEntity>(deck, HttpStatus.OK);
 
 	}
 

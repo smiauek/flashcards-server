@@ -27,13 +27,6 @@ public class UserController {
 
 	private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-//	@PostMapping("/new")
-//	public Long saveUser(@RequestBody UserEntity user) {
-//		UserEntity newUser = user;
-//		newUser.setPassword(passwordEncoder.encode(user.getPassword()));
-//		return userRepo.save(newUser).getUserId();
-//	}
-
 	@PostMapping("/new")
 	public ResponseEntity<UserEntity> saveUser(@Valid @RequestBody UserEntity user) {
 		UserEntity newUser = user;

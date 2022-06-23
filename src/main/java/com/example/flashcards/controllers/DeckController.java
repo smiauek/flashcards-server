@@ -1,12 +1,12 @@
 package com.example.flashcards.controllers;
 
-import java.rmi.ServerException;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -53,14 +53,12 @@ public class DeckController {
 		return deckRepo.findByNameContainsOrDescriptionContains(searchTerm, searchTerm);
 	}
 
-	@PostMapping(path = "/new", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<DeckEntity> create(@RequestBody DeckEntity newDeck) throws ServerException {
-		DeckEntity deck = deckRepo.save(newDeck);
-		if (deck == null) {
-			throw new ServerException("something went wron when creating new deck");
-		} else {
-			return new ResponseEntity<DeckEntity>(deck, HttpStatus.CREATED);
-		}
+	@PostMapping("/new")
+	public ResponseEntity<DeckEntity> createDeck(@Valid @RequestBody DeckEntity deck) {
+
+		DeckEntity savedDeck = deckRepo.save(deck);
+
+		return new ResponseEntity<DeckEntity>(savedDeck, HttpStatus.CREATED);
 	}
 
 	@PutMapping("/update/{id}")

@@ -4,8 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-//import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "decks")
@@ -15,11 +16,14 @@ public class DeckEntity {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long deckId;
 
+	@NotEmpty(message = "deck name must not be empty")
+	@Size(min = 3, message = "deck name should have at least 3 characters")
 	private String name;
+
+	@NotEmpty(message = "deck description must not be empty")
+	@Size(min = 8, message = "deck description should have at least 8 characters")
 	private String description;
 
-//	@ManyToOne
-//  @JoinColumn(name = "userId")
 	private Long userId;
 
 	public DeckEntity() {

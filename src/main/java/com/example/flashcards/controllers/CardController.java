@@ -3,7 +3,10 @@ package com.example.flashcards.controllers;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -37,26 +40,16 @@ public class CardController {
 		return cardRepo.findById(id);
 	}
 
-//	@PostMapping(path = "/new", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-//	public ResponseEntity<CardEntity> create(@RequestBody CardEntity newCard) throws ServerException {
-//		System.out.println(newCard);
-//		CardEntity card = cardRepo.save(newCard);
-//		System.out.println(card);
-//		if (card == null) {
-//			throw new ServerException("something went wrong when creating new card");
-//		} else {
-//			return new ResponseEntity<CardEntity>(card, HttpStatus.CREATED);
-//		}
-//	}
-
 	@PostMapping("/new")
-	public CardEntity newCard(@RequestBody CardEntity newCard) {
+	public ResponseEntity<CardEntity> newCard(@Valid @RequestBody CardEntity newCard) {
 
-		return cardRepo.save(newCard);
+		CardEntity savedCard = cardRepo.save(newCard);
+
+		return new ResponseEntity<CardEntity>(savedCard, HttpStatus.CREATED);
 	}
 
 	@PutMapping("/update/{id}")
-	public ResponseEntity<CardEntity> updateCard(@PathVariable Long id, @RequestBody CardEntity updatedCard)
+	public ResponseEntity<CardEntity> updateCard(@PathVariable Long id, @Valid @RequestBody CardEntity updatedCard)
 			throws Exception {
 
 		CardEntity cardToUpdate = cardRepo.findById(id).orElseThrow(() -> new Exception("card not found"));
@@ -66,7 +59,7 @@ public class CardController {
 
 		CardEntity card = cardRepo.save(cardToUpdate);
 
-		return ResponseEntity.ok(card);
+		return new ResponseEntity<CardEntity>(card, HttpStatus.OK);
 
 	}
 

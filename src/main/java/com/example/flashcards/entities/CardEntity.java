@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 //import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "cards")
@@ -15,10 +17,13 @@ public class CardEntity {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long cardId;
 
+	@NotEmpty(message = "front of the card must not be empty")
+	@Size(min = 6, message = "front of the card should have at least 6 characters")
 	private String front;
+
+	@NotEmpty(message = "back of the card must not be empty")
 	private String back;
 
-//	@ManyToOne
 	private Long deckId;
 
 	public CardEntity() {

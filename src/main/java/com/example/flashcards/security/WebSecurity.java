@@ -44,6 +44,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 		CorsConfiguration corsConfiguration = new CorsConfiguration().applyPermitDefaultValues();
 		corsConfiguration.addAllowedMethod("PUT");
 		corsConfiguration.addAllowedMethod("DELETE");
+		corsConfiguration.addAllowedOriginPattern("https://desolate-headland-12251.herokuapp.com");
+		corsConfiguration.addAllowedOriginPattern("http://localhost:3000");
 		source.registerCorsConfiguration("/**", corsConfiguration);
 
 		return source;

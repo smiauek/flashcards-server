@@ -11,9 +11,9 @@ Front end for this API can be found [here](https://github.com/smiauek/flashcards
 Requests to open endpoints do not require authorization token, however requests only from allowed origins will be accepted.  
   
 - `POST /users/new`  
-This endpint consumes JSON body with use details, creates new user and saves it to database.  
+This endpoint consumes JSON body with use details, creates new user and saves it to database.  
 - `POST /user/login`  
-This endpint consumes JSON body with user credentials, upon succesful credential verification returns authorization token.  
+This endpoint consumes JSON body with user credentials, upon succesful credential verification returns authorization token.  
 - `GET /decks/`  
 This endpoint returns list of all existing decks.  
 - `GET /decks/:deckId`  
@@ -37,9 +37,9 @@ This endpoint consumes JSON body with deck details, creates new deck and saves i
 - `POST /cards/new`  
 This endpoint consumes JSON body with card details, creates new card and saves it to database.  
 - `PUT /decks/update/:deckId`  
-This enpoint consumes JSON body with deck details and saves updates to a given deck in database.  
+This endpoint consumes JSON body with deck details and saves updates to a given deck in database.  
 - `PUT /cards/update/:cardId`  
-This enpoint consumes JSON body with card details and saves updates to a given card in database.  
+This endpoint consumes JSON body with card details and saves updates to a given card in database.  
 - `DELETE /decks/delete/:deckId`  
 This endpoint removes given deck (and all cards associated with it) from database.  
 - `DELETE /cards/delete/:cardId`  

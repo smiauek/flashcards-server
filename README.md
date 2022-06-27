@@ -23,7 +23,7 @@ This endpoint returns all decks where name or description inludes provided searc
 - `GET /cards/:deckId`  
 This endpoint list of flashcards for a given deckId.  
   
-## Restricted Enpoints:  
+## Restricted Endpoints:  
 Requests to restricted endpoints require authorization token, also requests only from allowed origins will be accepted.  
   
 - `GET /users/one?username=______`  

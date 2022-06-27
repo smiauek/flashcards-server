@@ -21,7 +21,7 @@ This endpoint returns deck details for a given deckId.
 - `GET /decks/find?searchTerm=______`  
 This endpoint returns all decks where name or description includes provided search term.  
 - `GET /cards/:deckId`  
-This endpoint list of flashcards for a given deckId.  
+This endpoint returns list of flashcards for a given deckId.  
   
 ## Restricted Endpoints:  
 Requests to restricted endpoints require authorization token, also requests only from allowed origins will be accepted.  
